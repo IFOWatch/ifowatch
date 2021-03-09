@@ -12,7 +12,7 @@ do IFO tokens end up distributed fairly?
 
 _tl:dr; [show me the graphs](#tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent)_
 
-_tl:dr; [show me the code](TODO: github gist)_
+_tl:dr; [show me the code](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271_
 
 _tl:dr; [show me how to fix it](#is-there-a-better-way)_
 
@@ -50,7 +50,7 @@ In effect this means that **the rich got richer** while everyone else got very l
 
 To verify this hypothesis, we can use the bscscan API to gather information
 about the transactions that occurred during the $WATCH IFO. The code used to gather the data
-used in this post is available (on github)[TODO:link].
+used in this post is available (on github)[https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271].
 
 ------------
 
@@ -88,7 +88,7 @@ def get_transactions_page(contract, address, start_block=0, request_size=10000):
 ```
 
 _Note: A large portion of graphing code hase been omitted; see the
-[github gist](TODO:link) for a
+[github gist](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271) for a
 complete copy of the code that generates the graphs shown in this post. You can even even run it yourself
 against live bscscan data!_
 

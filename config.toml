@@ -29,7 +29,7 @@ summaryLength = 30
   homepage_button_link = '/posts'
   homepage_button_text = 'Read $WATCH Breakdown'
   homepage_intro = 'IFOWatch analyzes recent IFO data using bscscan.'
-  homepage_image = '/images/terminal.gif'
+  homepage_image = '/chart.png'
 
   ## You can enable to add anchor links to header elements
   # enable_anchor_link = true
