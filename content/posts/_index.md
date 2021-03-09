@@ -4,6 +4,6 @@ date: 2018-11-28T15:14:39+10:00
 weight: 1
 ---
 
-## Whisper Theme
+## IFOWatch Posts
 
-Whisper is a minimal documentation theme for Hugo. The design and functionality is intentionally minimal. We’re aiming for a similar feel to a Github readme.
+IFOWatch analyzes recent IFO data using bscscan. You can read about the IFOs we have analyzed below.
