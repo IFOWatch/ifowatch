@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Yieldwatch IFO: What Happened? - IFOWatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="/ifowatch/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/ifowatch/css/style.min.bffdeb61adf50666cd2a42bb36eeba60b8fd638559bb0f00d1f438ec5207ff00.css">
+  
+
+  
+
+</head>
+
+<body class='page page-default-single'>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/ifowatch/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-posts">
+      <a href="/ifowatch/posts/">
+        <span>Posts</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div class="wrapper">
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="/ifowatch/"><img alt="Logo" src="/ifowatch/logo.png" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/ifowatch/"><img alt="Logo" src="/ifowatch/logo.png" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-home">
+      <a href="/ifowatch/">
+        <span>Home</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-posts">
+      <a href="/ifowatch/posts/">
+        <span>Posts</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+
+
+    
+    
+    
+    
+    
+    
+
+    
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+      <div class="row">
+        <div class="col-12 col-md-3 mb-3">
+          <div class="sidebar">
+            
+<div class="docs-menu">
+  <h4>Posts</h4>
+  <ul>
+    
+    <li class="active ">
+      <a href="/ifowatch/posts/yieldwatch/">Yieldwatch IFO: What Happened?</a>
+    </li>
+    
+  </ul>
+</div>
+
+          </div>
+        </div>
+        <div class="col-12 col-md-9">
+          
+<h1 class="title">Yieldwatch IFO: What Happened?</h1>
+<div class="content ">
+  <p>The Yieldwatch IFO on PancakeSwap made history with recordbreaking participation. But when the limits of IFOs are
+tested in such a manner, are tokens distributed fairly?</p>
+<p><em>tl:dr; <a href="#tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent">show me the graphs</a></em></p>
+<p><em>tl:dr; [show me the code](TODO: github gist)</em></p>
+<p><em>tl:dr; [show me how to fix it](TODO: github gist)</em></p>
+<hr>
+<p>On 3/4/2021, PancakeSwap (PCS) hosted its 7th IFO, offering 8 million Yieldwatch tokens
+(<a href="https://bscscan.com/token/0x7a9f28eb62c791422aa23ceae1da9c847cbec9b0">$WATCH</a>) for a total fundraising goal
+of <strong>$800,000</strong>. Over 10,000 eager investors pledged a sum of money far greater: <strong>over $560,000,000</strong>
+worth of CAKE-BNB tokens were pledged <strong>TODO: wordeing?</strong> in hopes of acquiring $WATCH tokens at the
+IFO price of $0.10 apiece.</p>
+<p>Once the IFO was complete and the dust had settled, the lucky $WATCH holders sold each
+$WATCH token to those who did not participate for over $3 each&ndash;<strong>yielding a 30x gain</strong>.</p>
+<p>Some might claim that those who speculated correctly were rewarded commensurately for their speculation. <strong>But the data may tell a
+different story.</strong></p>
+<hr>
+<p>The amount of dollars raised ($560M) clearly exceeds the sum of $WATCH tokens sold ($800K)&ndash;over
+<strong>711x the funding goal.</strong> So when demand so grossly exceeds supply, how are the tokens actually allocated to buyers?</p>
+<p>PancakeSwap uses an &ldquo;overflow&rdquo; method that assigns tokens to IFO participants
+proportional to the amount that each participant pledges in comparison to the
+total amount pledged. PCS explains the overflow method with each IFO offered on
+the exchange: <a href="https://pancakeswap.medium.com/yieldwatch-watch-ifo-to-be-hosted-on-pancakeswap-d24301f17241">https://pancakeswap.medium.com/yieldwatch-watch-ifo-to-be-hosted-on-pancakeswap-d24301f17241</a></p>
+<p>While <a href="">some</a> have <a href="">claimed</a> that the overflow method is &ldquo;<a href="">fair</a>,&rdquo; this post posits that the vast majority of
+gains were realized by &ldquo;whales,&rdquo; or individuals who are
+able to put up an amount of funds that is <strong>significantly disproportionate</strong> to total amount of funds raised. All the while,
+the majority of participants were left comparatively very little tokens.
+In effect this means that <strong>the rich got richer</strong> while everyone else got very little.</p>
+<p>To verify this hypothesis, we can use the bscscan API to gather information
+about the transactions that occurred during the $WATCH IFO. The code used to gather the data
+used in this post is available (on github)[TODO:link].</p>
+<hr>
+<p>We can retrieve data from bscscan using the HTTP APIs published by Binance. In this post, we will use the
+<a href="">python requests module</a> to do so.
+First we need the bscscan API URL, which we can find from the <a href="https://bscscan.com/apis">bscscan documentation</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">code
+</code></pre></div><p>In order to locate the data we are interested in, we need to determine the <em>contract</em> address (this is
+the address of the token we want to get information about), and the <em>wallet</em> address where the IFO
+tokens are distributed from. Using these two addresses, we can get a list of all transactions that
+occurred involving both addresses:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">code
+</code></pre></div><p>From this point we have all the data we need, and it is all about arranging it. (See the github gist for a
+complete copy of the code that generates the graphs shown in this post using live bscscan data.)</p>
+<hr>
+<p>We will show two data sets:</p>
+<ol>
+<li>The amount of tokens sent to addresses <strong>as a percent of the total number of tokens sent</strong></li>
+<li>The amount of tokens sent to addresses <strong>as a percent of the total number of participating adressess</strong></li>
+</ol>
+<p>By comparing these two data sets, we will show that the total amount of $WATCH assigned
+disproportionally benefited the participants who <strong>already have more capital to pledge</strong> over first-time investors.</p>
+<hr>
+<h4 id="tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent">Tokens sent to addresses as a percent of the total number of tokens sent</h4>
+<p>TODO: image of graph</p>
+<p>We can immediately make one very telling observation about this graph:
+a total of <strong>ten addresses</strong> (or <strong>0.1%</strong> of 10,000+ participants) collected <strong>over 25%</strong> of $WATCH tokens.</p>
+<p>Yet, if we visualize this data as a share of participating addresses, the story becomes even more frustrating.</p>
+<hr>
+<h4 id="tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-participants">Tokens sent to addresses as a percent of the total number of participants</h4>
+<p>TODO: image of graph</p>
+<p>This graph shows the same populations, as a share of total participants. Another piece of data becomes
+immediately obvious when viewing this data: <strong>the vast majority</strong> of $WATCH tokens were collected by
+a <strong>tiny fraction</strong> of total participants.</p>
+<p>It is obvious that whales are dominating in the IFO process, and leaving little room for others to make gains.</p>
+<hr>
+<h1 id="is-there-a-better-way">Is there a better way?</h1>
+<p>The first question I came up with upon reckoning with this data is: would IFOs still be successful if whales were
+prevented from monopolizing all of the gains?</p>
+<p>We can also answer this question with data. If we sort the amount of
+$WATCH collected from smallest to largest, we can find the exact number of participants would have
+been required to meet the IFO funding goal, along with a theoretical individual contribution cap.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">code
+</code></pre></div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li class="zerostatic"><a href="https://www.zerostatic.io">www.zerostatic.io</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/ifowatch/js/scripts.min.eaf147370baecdd07c022597db631f99cab1c9cd6479de586f30327a568d6a0f.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+
+</html>
