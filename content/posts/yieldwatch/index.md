@@ -4,32 +4,30 @@ date: 2021-03-08T19:27:37+10:00
 weight: 2
 ---
 
-The Yieldwatch IFO on PancakeSwap made history with recordbreaking participation. But when the limits of IFOs are
-tested in such a manner, are tokens distributed fairly?
+The Yieldwatch IFO on PancakeSwap made history with recordbreaking participation. With the next IFO jsut around
+the corner, IFOWatch wonders: when the limits of the IFO process are tested in such a manner,
+do IFO tokens end up distributed fairly?
 
 <!--more-->
-
 
 _tl:dr; [show me the graphs](#tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent)_
 
 _tl:dr; [show me the code](TODO: github gist)_
 
-_tl:dr; [show me how to fix it](TODO: github gist)_
+_tl:dr; [show me how to fix it](#is-there-a-better-way)_
 
 
 -------------
 
 On 3/4/2021, PancakeSwap (PCS) hosted its 7th IFO, offering 8 million Yieldwatch tokens
-([$WATCH](https://bscscan.com/token/0x7a9f28eb62c791422aa23ceae1da9c847cbec9b0)) for a total fundraising goal
-of **$800,000**. Over 10,000 eager investors pledged a sum of money far greater: **over $560,000,000**
-worth of CAKE-BNB tokens were pledged **TODO: wordeing?** in hopes of acquiring $WATCH tokens at the
-IFO price of $0.10 apiece.
+([$WATCH](https://bscscan.com/token/0x7a9f28eb62c791422aa23ceae1da9c847cbec9b0)) at $0.10 apiece,
+for a total fundraising goal of **$800,000**. Over 10,000 eager investors pledged a sum
+of money far greater, totaling **over $560,000,000** worth of CAKE-BNB tokens.
 
-Once the IFO was complete and the dust had settled, the lucky $WATCH holders sold each
-$WATCH token to those who did not participate for over $3 each--**yielding a 30x gain**.
+Once the dust had settled and the IFO was complete, lucky $WATCH holders sold each
+$WATCH token to those who did not (or could not) participate for over $3 each--**yielding a 30x gain**.
 
-Some might claim that those who speculated correctly were rewarded commensurately for their speculation. **But the data may tell a
-different story.**
+Some might claim that those who speculated correctly were rewarded commensurately for their speculation. **But the data may tell a different story.**
 
 ------------
 
@@ -117,10 +115,92 @@ It is obvious that whales are dominating in the IFO process, and leaving little 
 The first question I came up with upon reckoning with this data is: would IFOs still be successful if whales were
 prevented from monopolizing all of the gains?
 
-We can also answer this question with data. If we sort the amount of
-$WATCH collected from smallest to largest, we can find the exact number of participants would have
-been required to meet the IFO funding goal, along with a theoretical individual contribution cap.
+We can also answer this question with data. If we sort the amount of $WATCH collected from smallest to largest,
+we can find the exact number of participants that would have been required to meet the IFO funding goal:
 
+```python
+def identify_funding_goal_participant_index(watch_tokens_distributed, funding_goal_dollars):
+    ifo_funds_raised = 0
+    contributor = len(watch_tokens_distributed)
+    for idx, val in enumerate(watch_tokens_distributed):
+        user_pledged = val * 0.10 * 711.0
+        ifo_funds_raised += user_pledged
+        if ifo_funds_raised >= funding_goal_dollars:
+            contributor_s = f"Found funding limit on contributor {idx},"
+            pledge_s = f" who pledged ${user_pledged:,.02f}, and collected {val} $WATCH."
+            raised_s = f"We have raised {ifo_funds_raised}"
+            print(contributor_s, pledge_s, raised_s)
+            contributor = idx
+            break
+    return contributor
+
+identify_funding_goal_participant_index(watch_token_dists, 800000)
+
+# prints
+# Found funding limit on contributor 1406, who pledged $568.80, and collected 8 $WATCH. We have raised 800301.600000015
 ```
-code
+
+When executed, this code shows that the funding limit would have been reached with only the first **1,406 participants**
+when arranged from smallest to largest contribution. In fact, the funding goal would have been reached without
+a single contribution over **$568.** It is safe to say the IFO would have been successful **without any whales at all.**
+
+Certainly ~$500 may be too strict of an upper limit. But how would the situation have fared with a more reasonable
+upper limit set? We can answer this with a simple simulation:
+
+```python
+def simulate_with_individual_contributor_limit(watch_token_dists, individual_limit=10000):
+    ifo_funds_raised = 0
+    users_limited = 0
+    for idx, val in enumerate(watch_token_dists):
+        user_pledged_dollars = val * 0.10 * 711.0
+        if user_pledged_dollars > individual_limit:
+            user_pledged_dollars = individual_limit
+            users_limited += 1
+        ifo_funds_raised += user_pledged_dollars
+    funding_goal_factor = ifo_funds_raised / 800000
+    limit_s = f"With an individual limit of ${individual_limit:,}, {users_limited} users were limited,"
+    goal_s = f"and total funds raised: ${ifo_funds_raised:,.02f} ({funding_goal_factor:,.02f}x goal)"
+    print(limit_s, goal_s)
+    
+simulate_with_individual_contributor_limit(watch_token_dists)
+simulate_with_individual_contributor_limit(watch_token_dists, 20000)
+simulate_with_individual_contributor_limit(watch_token_dists, 50000)
+simulate_with_individual_contributor_limit(watch_token_dists, 100000)
+
+# prints:
+# With an individual limit of $10,000, 3234 users were limited, and total funds raised: $52,699,627.20 (65.87x goal)
+# With an individual limit of $20,000, 2103 users were limited, and total funds raised: $78,496,190.40 (98.12x goal)
+# With an individual limit of $50,000, 1147 users were limited, and total funds raised: $123,692,556.80 (154.62x goal)
+# With an individual limit of $100,000, 666 users were limited, and total funds raised: $166,990,356.00 (208.74x goal)
 ```
+
+If we consider a theoretical $10,000 limit, each user contributing up to the limit would be guaranteed nearly **10x more
+watch tokens** assigned than with no limits set at all. Even with a much more permissive limit of $100,000, each user
+contributing under the limit would have been assigned nearly three times as many watch tokens.
+
+We leave the judgment of the merits of such limits as an ethical exercise for the reader.
+
+### But what about bots?
+
+If PancakeSwap were to impose a wallet cap with no additional measures, certainly whales might look towards "botting"
+(or, using code to generate many wallets in order to circumvent any such limits). PancakeSwap has
+[even cited](TODO:link) such a possibility as a major deterrant from even
+attempting to make the IFO process more equitable. However, anti-bot technology has existed for decades--for example,
+even a simple [captcha test]() would at least reduce the total
+number of times a whale can physically attempt to solve the
+captcha challenge within the IFO time period. It may not be a silver bullet, but instead an incremental improvement
+(and one that in this writer's opinion is sorely needed).
+
+IFO facilitators such as PancakeSwap could also look towards more high-tech forward-thinking on-chain solutions,
+such as using ID-verifying technology like [Litentry](https://www.litentry.com/) to ensure that individuals
+don't participate part their fare share.
+
+### Thanks for reading
+
+If you found this post interesting, informative, or helpful, please consider donating some BNB or BUSD to
+the author's BEP20 wallet: TODO: add wallet ID. Donations help authors rationalize the effort and time spent
+researching and writing posts like these.
+
+Good luck in the next IFO, and godspeed out in the land of Defi!
+
+-- S
