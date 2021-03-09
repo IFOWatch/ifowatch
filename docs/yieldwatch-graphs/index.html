@@ -1,0 +1,78 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Yieldwatch IFO Graphs</title>          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.0.min.js" integrity="sha384-HjagQp6T0/7bxYTAXbLotF1MLAGWmhkY5siA1Gc/pcEgvgRPtMsRn0gQtMwGKiw1" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="f33e0dae-7900-408b-b1ea-e31ecf37d3e3" data-root-id="1084"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1265">
+          {"e81df492-52f8-460e-abb7-32504a9034db":{"defs":[{"extends":null,"module":null,"name":"DataModel","overrides":[],"properties":[]}],"roots":{"references":[{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{"field":"angle","include_zero":true},"id":"1065","type":"CumSum"},{"attributes":{"axis_label":null,"formatter":{"id":"1076"},"major_label_policy":{"id":"1074"},"ticker":{"id":"1059"},"visible":false},"id":"1058","type":"LinearAxis"},{"attributes":{"field":"angle"},"id":"1025","type":"CumSum"},{"attributes":{"axis":{"id":"1058"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1061","type":"Grid"},{"attributes":{},"id":"1059","type":"BasicTicker"},{"attributes":{},"id":"1039","type":"UnionRenderers"},{"attributes":{"callback":null,"tooltips":"@transactions: @value transactions (@as_pct{0.00%})"},"id":"1021","type":"HoverTool"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{},"id":"1040","type":"Selection"},{"attributes":{"callback":null,"tooltips":"@watch: @value watch (@as_pct{0.00%})"},"id":"1062","type":"HoverTool"},{"attributes":{"start":-0.5},"id":"1005","type":"Range1d"},{"attributes":{"active_multi":null,"tools":[{"id":"1062"}]},"id":"1063","type":"Toolbar"},{"attributes":{},"id":"1080","type":"UnionRenderers"},{"attributes":{"label":{"field":"watch"},"renderers":[{"id":"1071"}]},"id":"1083","type":"LegendItem"},{"attributes":{},"id":"1081","type":"Selection"},{"attributes":{"data_source":{"id":"1026"},"glyph":{"id":"1028"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1029"},"view":{"id":"1031"}},"id":"1030","type":"GlyphRenderer"},{"attributes":{"data_source":{"id":"1067"},"glyph":{"id":"1069"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1070"},"view":{"id":"1072"}},"id":"1071","type":"GlyphRenderer"},{"attributes":{"label":{"field":"transactions"},"renderers":[{"id":"1030"}]},"id":"1042","type":"LegendItem"},{"attributes":{},"id":"1014","type":"BasicTicker"},{"attributes":{"data":{"angle":{"__ndarray__":"L5k7fuoJEEBdkKBmmhb8PyDYHt/7bNk/kleWrAfNrz9T/aNA0pmeP9bf9biRZpc/96Mlv1YzQz/3oyW/VjNDP/ejJb9WM0M/96Mlv1YzQz/3oyW/VjNDP/ejJb9WM0M/96Mlv1YzQz/3oyW/VjNDP/ejJb9WM0M/96Mlv1YzQz8=","dtype":"float64","order":"little","shape":[16]},"as_pct":{"__ndarray__":"GE/lidBr5D+/vMocruHRPyMH53G/L7A/MMFMm70+hD89sE5gKntzPxKVtPxty20/ah7CX2dyGD9qHsJfZ3IYP2oewl9nchg/ah7CX2dyGD9qHsJfZ3IYP2oewl9nchg/ah7CX2dyGD9qHsJfZ3IYP2oewl9nchg/ah7CX2dyGD8=","dtype":"float64","order":"little","shape":[16]},"color":["#80ffdb","#72efdd","#64dfdf","#56cfe1","#5e60ce","#7400b8","#999","#888","#777","#666","#555","#444","#333","#222","#111","#000"],"index":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"transactions":["0 to 100 watch collected","100 to 1000 watch collected","1000 to 5000 watch collected","5000 to 10000 watch collected","10000 to 20000 watch collected","20000 to 100000 watch collected","0x2d3ca83db323146fd1175b4d826bcc57c916a9ba","0xdf232a82f5f5814396e96a69908055209e028187","0x67f65ea400b8b8a596cb360af3c9e8ae62376692","0xf208d2d3e0a6e971e6b093b56d98b9a368863878","0x837474f1334508dbcf5e7536a982bbf28a8ef38d","0xe67336a45c778ca0ddc9240fd9246779ff51f4a6","0x7bda16073b3ffe2ba4cf06784515d6fa21439aa3","0x473afab58b2c5d4dbc5fad5d236f6658ad84e83b","0xc72f3295b7fe847ec99e3a3c6dd6e90db5e1061b","0x3e8734ec146c981e3ed1f6b582d447dde701d90c"],"value":[6843,2996,678,106,51,39,1,1,1,1,1,1,1,1,1,1]},"selected":{"id":"1040"},"selection_policy":{"id":"1039"}},"id":"1026","type":"ColumnDataSource"},{"attributes":{"field":"angle"},"id":"1066","type":"CumSum"},{"attributes":{"below":[{"id":"1054"}],"center":[{"id":"1057"},{"id":"1061"},{"id":"1082"}],"height":700,"left":[{"id":"1058"}],"renderers":[{"id":"1071"}],"title":{"id":"1044"},"toolbar":{"id":"1063"},"toolbar_location":null,"width":900,"x_range":{"id":"1046"},"x_scale":{"id":"1050"},"y_range":{"id":"1048"},"y_scale":{"id":"1052"}},"id":"1043","subtype":"Figure","type":"Plot"},{"attributes":{"end_angle":{"expr":{"id":"1025"}},"fill_alpha":{"value":0.1},"fill_color":{"field":"color"},"line_alpha":{"value":0.1},"line_color":{"value":"white"},"radius":{"value":0.4},"start_angle":{"expr":{"id":"1024"}},"x":{"value":0},"y":{"value":1}},"id":"1029","type":"Wedge"},{"attributes":{"axis":{"id":"1017"},"dimension":1,"grid_line_color":null,"ticker":null},"id":"1020","type":"Grid"},{"attributes":{"items":[{"id":"1042"}]},"id":"1041","type":"Legend"},{"attributes":{},"id":"1033","type":"AllLabels"},{"attributes":{"axis_label":null,"formatter":{"id":"1038"},"major_label_policy":{"id":"1036"},"ticker":{"id":"1014"},"visible":false},"id":"1013","type":"LinearAxis"},{"attributes":{"text":"$WATCH Token Distribution as share of all tokens (2021-03-08 22:26:20.255855)"},"id":"1044","type":"Title"},{"attributes":{"axis":{"id":"1013"},"grid_line_color":null,"ticker":null},"id":"1016","type":"Grid"},{"attributes":{"source":{"id":"1026"}},"id":"1031","type":"CDSView"},{"attributes":{},"id":"1055","type":"BasicTicker"},{"attributes":{},"id":"1035","type":"BasicTickFormatter"},{"attributes":{},"id":"1074","type":"AllLabels"},{"attributes":{},"id":"1007","type":"DataRange1d"},{"attributes":{"children":[{"id":"1043"},{"id":"1002"}]},"id":"1084","type":"Row"},{"attributes":{"data":{"angle":{"__ndarray__":"BBPCyvYYxT/1f1kNusLnP9+UT0lG7vE/iDBfeYu+4j9VUCctxYniP1/EA9E18vI/LrybeYoqtj+Fq8TbVny8P6pp+/oppb0/IUYowAnevT+nEgx5PdnEP1VBBYH3jcY/zauWFTnyxj99lAqcDI7LP5/LaAZzKNA/wUVxbX5U3z8=","dtype":"float64","order":"little","shape":[16]},"as_pct":{"__ndarray__":"ovtukrjcmj/nhpesxEC+P2X/0uKE1MY/wogYcLLdtz+gH7GXgJq3P7ItcL16H8g/S4DtxQw5jD8TzHSHciKSPxW78m5p35I/q+qSeJ4Dkz9HGxXPlYuaPym8fpOkt5w/gE0LAks3nT8iYpJKv4qhPzl2MduwkqQ/ubX2RQHysz8=","dtype":"float64","order":"little","shape":[16]},"color":["#80ffdb","#72efdd","#64dfdf","#56cfe1","#5e60ce","#7400b8","#999","#888","#777","#666","#555","#444","#333","#222","#111","#000"],"index":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"value":[208160,937744,1415320,739768,731632,1495466,109352,140528,146248,147344,205704,222536,226400,271872,318848,618240],"watch":["0 to 100 watch collected","100 to 1000 watch collected","1000 to 5000 watch collected","5000 to 10000 watch collected","10000 to 20000 watch collected","20000 to 100000 watch collected","0x2d3ca83db323146fd1175b4d826bcc57c916a9ba","0xdf232a82f5f5814396e96a69908055209e028187","0x67f65ea400b8b8a596cb360af3c9e8ae62376692","0xf208d2d3e0a6e971e6b093b56d98b9a368863878","0x837474f1334508dbcf5e7536a982bbf28a8ef38d","0xe67336a45c778ca0ddc9240fd9246779ff51f4a6","0x7bda16073b3ffe2ba4cf06784515d6fa21439aa3","0x473afab58b2c5d4dbc5fad5d236f6658ad84e83b","0xc72f3295b7fe847ec99e3a3c6dd6e90db5e1061b","0x3e8734ec146c981e3ed1f6b582d447dde701d90c"]},"selected":{"id":"1081"},"selection_policy":{"id":"1080"}},"id":"1067","type":"ColumnDataSource"},{"attributes":{"axis_label":null,"formatter":{"id":"1035"},"major_label_policy":{"id":"1033"},"ticker":{"id":"1018"},"visible":false},"id":"1017","type":"LinearAxis"},{"attributes":{},"id":"1036","type":"AllLabels"},{"attributes":{"end_angle":{"expr":{"id":"1025"}},"fill_color":{"field":"color"},"line_color":{"value":"white"},"radius":{"value":0.4},"start_angle":{"expr":{"id":"1024"}},"x":{"value":0},"y":{"value":1}},"id":"1028","type":"Wedge"},{"attributes":{"below":[{"id":"1013"}],"center":[{"id":"1016"},{"id":"1020"},{"id":"1041"}],"height":700,"left":[{"id":"1017"}],"renderers":[{"id":"1030"}],"title":{"id":"1003"},"toolbar":{"id":"1022"},"toolbar_location":null,"width":900,"x_range":{"id":"1005"},"x_scale":{"id":"1009"},"y_range":{"id":"1007"},"y_scale":{"id":"1011"}},"id":"1002","subtype":"Figure","type":"Plot"},{"attributes":{"start":-0.5},"id":"1046","type":"Range1d"},{"attributes":{"field":"angle","include_zero":true},"id":"1024","type":"CumSum"},{"attributes":{"end_angle":{"expr":{"id":"1066"}},"fill_alpha":{"value":0.1},"fill_color":{"field":"color"},"line_alpha":{"value":0.1},"line_color":{"value":"white"},"radius":{"value":0.4},"start_angle":{"expr":{"id":"1065"}},"x":{"value":0},"y":{"value":1}},"id":"1070","type":"Wedge"},{"attributes":{},"id":"1076","type":"BasicTickFormatter"},{"attributes":{},"id":"1038","type":"BasicTickFormatter"},{"attributes":{},"id":"1048","type":"DataRange1d"},{"attributes":{},"id":"1018","type":"BasicTicker"},{"attributes":{"axis":{"id":"1054"},"grid_line_color":null,"ticker":null},"id":"1057","type":"Grid"},{"attributes":{},"id":"1077","type":"AllLabels"},{"attributes":{"source":{"id":"1067"}},"id":"1072","type":"CDSView"},{"attributes":{},"id":"1050","type":"LinearScale"},{"attributes":{"items":[{"id":"1083"}]},"id":"1082","type":"Legend"},{"attributes":{},"id":"1079","type":"BasicTickFormatter"},{"attributes":{"end_angle":{"expr":{"id":"1066"}},"fill_color":{"field":"color"},"line_color":{"value":"white"},"radius":{"value":0.4},"start_angle":{"expr":{"id":"1065"}},"x":{"value":0},"y":{"value":1}},"id":"1069","type":"Wedge"},{"attributes":{"axis_label":null,"formatter":{"id":"1079"},"major_label_policy":{"id":"1077"},"ticker":{"id":"1055"},"visible":false},"id":"1054","type":"LinearAxis"},{"attributes":{"text":"$WATCH Token Distribution as share of all transactions (2021-03-08 22:26:20.255855)"},"id":"1003","type":"Title"},{"attributes":{},"id":"1052","type":"LinearScale"},{"attributes":{"active_multi":null,"tools":[{"id":"1021"}]},"id":"1022","type":"Toolbar"}],"root_ids":["1084"]},"title":"Bokeh Application","version":"2.3.0"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  var docs_json = document.getElementById('1265').textContent;
+                  var render_items = [{"docid":"e81df492-52f8-460e-abb7-32504a9034db","root_ids":["1084"],"roots":{"1084":"f33e0dae-7900-408b-b1ea-e31ecf37d3e3"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

@@ -89,6 +89,8 @@ disproportionally benefited the participants who **already have more capital to 
 
 ![$WATCH token distribution as a share of all tokens](https://ifowatch.github.io/ifowatch/token.png)
 
+_View interactive graphs [here](/ifowatch/yieldwatch-graphs/)_
+
 We can immediately make one very telling observation about this graph:
 a total of **ten addresses** (or **0.1%** of 10,000+ participants) collected **over 25%** of $WATCH tokens.
 
@@ -100,8 +102,10 @@ Yet, if we visualize this data as a share of participating addresses, the story 
 
 ![$WATCH token distribution as a share of all transactions](https://ifowatch.github.io/ifowatch/tx.png)
 
+_View interactive graphs [here](/ifowatch/yieldwatch-graphs/)_
+
 This graph shows the same populations, as a share of total participants. Another piece of data becomes
-immediately obvious when viewing this data: **the vast majority** of $WATCH tokens were collected by
+immediately obvious when viewing this data: **the majority** (over 50%) of $WATCH tokens were collected by
 a **tiny fraction** of total participants.
 
 It is obvious that whales are dominating in the IFO process, and leaving little room for others to make gains.
