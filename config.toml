@@ -42,8 +42,8 @@ summaryLength = 30
     meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
     meta_og_description = "IFOWatch analyzes recent IFO data using bscscan."
     meta_twitter_card = "summary"
-    meta_twitter_site = "@zerostaticio"
-    meta_twitter_creator = "@zerostaticio"
+    meta_twitter_site = "@IFOWatch"
+    meta_twitter_creator = "@IFOWatch"
 
   [params.logo]
       mobile = "logo.png"
