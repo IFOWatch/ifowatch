@@ -10,6 +10,8 @@ do IFO tokens end up distributed fairly?
 
 <!--more-->
 
+[This post is cross-posted on [medium](https://bscifowatch.medium.com/yieldwatch-ifo-what-happened-a5a940ab9d62)]
+
 _tl:dr; [show me the graphs](#tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent)_
 
 _tl:dr; [show me the code](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271)_
