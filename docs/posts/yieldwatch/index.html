@@ -103,7 +103,7 @@
           
 <h1 class="title">Yieldwatch IFO: What Happened?</h1>
 <div class="content ">
-  <p>The Yieldwatch IFO on PancakeSwap made history with recordbreaking participation. With the next IFO jsut around
+  <p>The Yieldwatch IFO on PancakeSwap made history with recordbreaking participation. With the next IFO just around
 the corner, IFOWatch wonders: when the limits of the IFO process are tested in such a manner,
 do IFO tokens end up distributed fairly?</p>
 <p><em>tl:dr; <a href="#tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent">show me the graphs</a></em></p>
@@ -124,10 +124,13 @@ $WATCH token to those who did not (or could not) participate for over $3 each&nd
 proportional to the amount that each participant pledges in comparison to the
 total amount pledged. PCS explains the overflow method with each IFO offered on
 the exchange: <a href="https://pancakeswap.medium.com/yieldwatch-watch-ifo-to-be-hosted-on-pancakeswap-d24301f17241">https://pancakeswap.medium.com/yieldwatch-watch-ifo-to-be-hosted-on-pancakeswap-d24301f17241</a></p>
-<p>While <a href="">some</a> have <a href="">claimed</a> that the overflow method is &ldquo;<a href="">fair</a>,&rdquo; this post posits that the vast majority of
+<p>While <a href="https://twitter.com/canpak65/status/1367444361982603269">some</a>
+have <a href="https://twitter.com/wschambach1/status/1367444965824090116">claimed</a> that
+the overflow method is &ldquo;<a href="https://twitter.com/TheBishopNehru/status/1367434422555967488">fair</a>,&rdquo; this
+post posits that the vast majority of
 gains were realized by &ldquo;whales,&rdquo; or individuals who are
-able to put up an amount of funds that is <strong>significantly disproportionate</strong> to total amount of funds raised. All the while,
-the majority of participants were left comparatively very little tokens.
+able to put up an amount of funds that is <strong>significantly disproportionate</strong> to the number of participands. All the while,
+the majority of participants were left comparatively very little tokens, even with non-negligible four-figure pledges.
 In effect this means that <strong>the rich got richer</strong> while everyone else got very little.</p>
 <p>To verify this hypothesis, we can use the bscscan API to gather information
 about the transactions that occurred during the $WATCH IFO. The code used to gather the data
@@ -136,42 +139,60 @@ used in this post is available (on github)[TODO:link].</p>
 <p>We can retrieve data from bscscan using the HTTP APIs published by Binance. In this post, we will use the
 <a href="">python requests module</a> to do so.
 First we need the bscscan API URL, which we can find from the <a href="https://bscscan.com/apis">bscscan documentation</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">code
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&#34;https://api.bscscan.com/api?module=account&amp;action=tokentx&#34;</span>
 </code></pre></div><p>In order to locate the data we are interested in, we need to determine the <em>contract</em> address (this is
 the address of the token we want to get information about), and the <em>wallet</em> address where the IFO
 tokens are distributed from. Using these two addresses, we can get a list of all transactions that
-occurred involving both addresses:</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">code
-</code></pre></div><p>From this point we have all the data we need, and it is all about arranging it. (See the github gist for a
-complete copy of the code that generates the graphs shown in this post using live bscscan data.)</p>
+occurred involving both addresses. Both addresses are fairly trivially found on bscsan (which is left
+as an exercise for the reader).</p>
+<p>Along with some python looping magic, we can iterate over all known transactions that involved both addresses.
+From this point we have all the data we need, and it is all about arranging it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">yieldwatch_contract</span> <span class="o">=</span> <span class="s2">&#34;0x7a9f28eb62c791422aa23ceae1da9c847cbec9b0&#34;</span>
+<span class="n">ifo_address</span> <span class="o">=</span> <span class="s2">&#34;0x55344b55c71ad8834c397e6e08df5195cf84fe6d&#34;</span>
+
+
+<span class="k">def</span> <span class="nf">get_transactions_page</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">start_block</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">request_size</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">your_api_key</span> <span class="o">=</span> <span class="s2">&#34;YourApiKeyToken&#34;</span>
+    <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&#34;https://api.bscscan.com/api?module=account&amp;action=tokentx&#34;</span>
+    <span class="n">page_url</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;&amp;contractaddress={contract}&amp;address={address}&amp;page=1&amp;offset={request_size}&amp;sort=asc&amp;apikey={your_api_key}&amp;startblock={start_block}&#34;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">base_url</span> <span class="o">+</span> <span class="n">page_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div><p><em>Note: A large portion of graphing code hase been omitted; see the
+<a href="TODO:link">github gist</a> for a
+complete copy of the code that generates the graphs shown in this post. You can even even run it yourself
+against live bscscan data!</em></p>
 <hr>
-<p>We will show two data sets:</p>
+<p>In this post we will show two data sets:</p>
 <ol>
 <li>The amount of tokens sent to addresses <strong>as a percent of the total number of tokens sent</strong></li>
 <li>The amount of tokens sent to addresses <strong>as a percent of the total number of participating adressess</strong></li>
 </ol>
 <p>By comparing these two data sets, we will show that the total amount of $WATCH assigned
-disproportionally benefited the participants who <strong>already have more capital to pledge</strong> over first-time investors.</p>
+disproportionally benefited the participants who <strong>already have more capital to pledge</strong> compared
+to the majority of investors.</p>
 <hr>
 <h4 id="tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent">Tokens sent to addresses as a percent of the total number of tokens sent</h4>
-<p><img src="https://ifowatch.github.io/ifowatch/token.png" alt="$WATCH token distribution as a share of all tokens"></p>
+<p><img src="https://ifowatch.github.io/ifowatch/token_v2.png" alt="$WATCH token distribution as a share of all tokens"></p>
 <p><em>View interactive graphs <a href="/ifowatch/yieldwatch-graphs/">here</a></em></p>
 <p>We can immediately make one very telling observation about this graph:
 a total of <strong>ten addresses</strong> (or <strong>0.1%</strong> of 10,000+ participants) collected <strong>over 25%</strong> of $WATCH tokens.</p>
 <p>Yet, if we visualize this data as a share of participating addresses, the story becomes even more frustrating.</p>
 <hr>
 <h4 id="tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-participants">Tokens sent to addresses as a percent of the total number of participants</h4>
-<p><img src="https://ifowatch.github.io/ifowatch/tx.png" alt="$WATCH token distribution as a share of all transactions"></p>
+<p><img src="https://ifowatch.github.io/ifowatch/tx_v2.png" alt="$WATCH token distribution as a share of all transactions"></p>
 <p><em>View interactive graphs <a href="/ifowatch/yieldwatch-graphs/">here</a></em></p>
-<p>This graph shows the same populations, as a share of total participants. Another piece of data becomes
-immediately obvious when viewing this data: <strong>the majority</strong> (over 50%) of $WATCH tokens were collected by
-a <strong>tiny fraction</strong> of total participants.</p>
-<p>It is obvious that whales are dominating in the IFO process, and leaving little room for others to make gains.</p>
+<p>This graph shows the same populations, as a share of total participants. Another conclusion becomes
+immediately obvious: <strong>the majority</strong> (over 50%) of $WATCH tokens were collected by
+<strong>a tiny fraction</strong> of total participants.</p>
+<p>It is clear that whales are dominating in the IFO process, and leaving little room for others to make gains.</p>
 <hr>
 <h1 id="is-there-a-better-way">Is there a better way?</h1>
-<p>The first question I came up with upon reckoning with this data is: would IFOs still be successful if whales were
-prevented from monopolizing all of the gains?</p>
-<p>We can also answer this question with data. If we sort the amount of $WATCH collected from smallest to largest,
+<p>This is the first question this author came up with upon reckoning with this data: would IFOs still be
+successful if whales were prevented from monopolizing all of the gains?</p>
+<p>We can also answer this question with code &amp; data. If we sort the amount of $WATCH collected from smallest to largest,
 we can find the exact number of participants that would have been required to meet the IFO funding goal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">identify_funding_goal_participant_index</span><span class="p">(</span><span class="n">watch_tokens_distributed</span><span class="p">,</span> <span class="n">funding_goal_dollars</span><span class="p">):</span>
     <span class="n">ifo_funds_raised</span> <span class="o">=</span> <span class="mi">0</span>
@@ -195,8 +216,8 @@ we can find the exact number of participants that would have been required to me
 </code></pre></div><p>When executed, this code shows that the funding limit would have been reached with only the first <strong>1,406 participants</strong>
 when arranged from smallest to largest contribution. In fact, the funding goal would have been reached without
 a single contribution over <strong>$568.</strong> It is safe to say the IFO would have been successful <strong>without any whales at all.</strong></p>
-<p>Certainly ~$500 may be too strict of an upper limit. But how would the situation have fared with a more reasonable
-upper limit set? We can answer this with a simple simulation:</p>
+<p>Certainly ~$500 may be too strict of a contribution limit. But how would the situation have fared with
+more permissive limits set? We can a answer this with a simple simulation:</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">simulate_with_individual_contributor_limit</span><span class="p">(</span><span class="n">watch_token_dists</span><span class="p">,</span> <span class="n">individual_limit</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
     <span class="n">ifo_funds_raised</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">users_limited</span> <span class="o">=</span> <span class="mi">0</span>
@@ -224,24 +245,30 @@ upper limit set? We can answer this with a simple simulation:</p>
 </code></pre></div><p>If we consider a theoretical $10,000 limit, each user contributing up to the limit would be guaranteed nearly <strong>10x more
 watch tokens</strong> assigned than with no limits set at all. Even with a much more permissive limit of $100,000, each user
 contributing under the limit would have been assigned nearly three times as many watch tokens.</p>
-<p>We leave the judgment of the merits of such limits as an ethical exercise for the reader.</p>
+<p>We leave the judgment of the merits of such limits as an ethical exercise for the reader, but it is obvious that
+the <strong>vast majority of the community</strong> would benefit from some contribution limit set.</p>
 <h3 id="but-what-about-bots">But what about bots?</h3>
 <p>If PancakeSwap were to impose a wallet cap with no additional measures, certainly whales might look towards &ldquo;botting&rdquo;
 (or, using code to generate many wallets in order to circumvent any such limits). PancakeSwap has
-<a href="TODO:link">even cited</a> such a possibility as a major deterrant from even
-attempting to make the IFO process more equitable. However, anti-bot technology has existed for decades&ndash;for example,
-even a simple <a href="">captcha test</a> would at least reduce the total
-number of times a whale can physically attempt to solve the
-captcha challenge within the IFO time period. It may not be a silver bullet, but instead an incremental improvement
+<a href="https://twitter.com/PancakeSwap/status/1367443785051824128">even cited</a> such a possibility as a major
+deterrant from even attempting to make the IFO process more equitable. However, anti-bot
+technology has existed for nearly two decades&ndash;for example, even a simple
+<a href="https://en.wikipedia.org/wiki/CAPTCHA">captcha test</a> would at least reduce the total
+number of times a whale could physically attempt to solve the captcha challenge within the IFO time period.
+It may not be a silver bullet, but instead an incremental improvement
 (and one that in this writer&rsquo;s opinion is sorely needed).</p>
-<p>IFO facilitators such as PancakeSwap could also look towards more high-tech forward-thinking on-chain solutions,
+<p>IFO facilitators such as PancakeSwap could also look towards more high-tech &amp; forward-thinking on-chain solutions,
 such as using ID-verifying technology like <a href="https://www.litentry.com/">Litentry</a> to ensure that individuals
-don&rsquo;t participate part their fare share.</p>
+don&rsquo;t participate part their fare share <em>without implementing KYC</em>. If PancakeSwap can&rsquo;t solve this problem,
+perhaps their community would be better served by platforms that aren&rsquo;t afraid to tackle complicated
+challenges. (This author wonders if perhaps up-and-coming exchanges like <a href="https://goosedefi.com">Goose Finance</a>
+may be up to the challenge?)</p>
 <h3 id="thanks-for-reading">Thanks for reading</h3>
-<p>If you found this post interesting, informative, or helpful, please consider donating some BNB or BUSD to
-the author&rsquo;s BEP20 wallet: TODO: add wallet ID. Donations help authors rationalize the effort and time spent
-researching and writing posts like these.</p>
-<p>Good luck in the next IFO, and godspeed out in the land of Defi!</p>
+<p>If you found this post interesting, informative, or helpful, please consider tipping some BNB or BUSD to
+the author&rsquo;s BEP20 wallet: 0x29eBe853D435C46454bc0c40DE6EF6bAd50711E7 . Donations help rationalize
+the effort and time spent researching and writing posts like these.</p>
+<p>To all readers, good luck in the next IFO, and godspeed out in the land of Defi! May you have the good sense to buy high,
+and the resolve to sell never!</p>
 <p>&ndash; S</p>
 </div>
 </div>
