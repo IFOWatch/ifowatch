@@ -87,7 +87,7 @@ disproportionally benefited the participants who **already have more capital to 
 
 #### Tokens sent to addresses as a percent of the total number of tokens sent
 
-TODO: image of graph
+![$WATCH token distribution as a share of all tokens](https://ifowatch.github.io/ifowatch/token.png)
 
 We can immediately make one very telling observation about this graph:
 a total of **ten addresses** (or **0.1%** of 10,000+ participants) collected **over 25%** of $WATCH tokens.
@@ -98,7 +98,7 @@ Yet, if we visualize this data as a share of participating addresses, the story 
 
 #### Tokens sent to addresses as a percent of the total number of participants
 
-TODO: image of graph
+![$WATCH token distribution as a share of all transactions](https://ifowatch.github.io/ifowatch/tx.png)
 
 This graph shows the same populations, as a share of total participants. Another piece of data becomes
 immediately obvious when viewing this data: **the vast majority** of $WATCH tokens were collected by
