@@ -50,7 +50,7 @@ In effect this means that **the rich got richer** while everyone else got very l
 
 To verify this hypothesis, we can use the bscscan API to gather information
 about the transactions that occurred during the $WATCH IFO. The code used to gather the data
-used in this post is available (on github)[https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271].
+used in this post is available [on github](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271).
 
 ------------
 
