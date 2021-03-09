@@ -89,7 +89,7 @@ def get_transactions_page(contract, address, start_block=0, request_size=10000):
     return data
 ```
 
-_Note: A large portion of graphing code hase been omitted; see the
+_Note: A large portion of graphing code has been omitted; see the
 [github gist](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271) for a
 complete copy of the code that generates the graphs shown in this post. You can even even run it yourself
 against live bscscan data!_
@@ -220,7 +220,7 @@ It may not be a silver bullet, but instead an incremental improvement
 
 IFO facilitators such as PancakeSwap could also look towards more high-tech & forward-thinking on-chain solutions,
 such as using ID-verifying technology like [Litentry](https://www.litentry.com/) to ensure that individuals
-don't participate past their fare share _without implementing KYC_. If PancakeSwap can't solve this problem,
+don't participate past their fair share _without implementing KYC_. If PancakeSwap can't solve this problem,
 perhaps their community would be better served by platforms that aren't afraid to tackle complicated
 challenges. (This author wonders if perhaps up-and-coming exchanges like [Goose Finance](https://goosedefi.com)
 may be up to the challenge?)
