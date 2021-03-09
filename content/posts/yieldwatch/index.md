@@ -226,8 +226,9 @@ may be up to the challenge?)
 ### Thanks for reading
 
 If you found this post interesting, informative, or helpful, please consider tipping some BNB or BUSD to
-the author's BEP20 wallet: 0x29eBe853D435C46454bc0c40DE6EF6bAd50711E7 . Donations help rationalize
-the effort and time spent researching and writing posts like these.
+the author's BEP20 wallet:
+[0x29eBe853D435C46454bc0c40DE6EF6bAd50711E7](https://bscscan.com/address/0x29eBe853D435C46454bc0c40DE6EF6bAd50711E7) .
+Donations help rationalize the effort and time spent researching and writing posts like these.
 
 To all readers, good luck in the next IFO, and godspeed out in the land of Defi! May you have the good sense to buy high,
 and the resolve to sell never!
