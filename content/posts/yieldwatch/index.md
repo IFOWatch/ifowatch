@@ -12,7 +12,7 @@ do IFO tokens end up distributed fairly?
 
 _tl:dr; [show me the graphs](#tokens-sent-to-addresses-as-a-percent-of-the-total-number-of-tokens-sent)_
 
-_tl:dr; [show me the code](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271_
+_tl:dr; [show me the code](https://gist.github.com/IFOWatch/f000feb603461286754881bdd3c27271)_
 
 _tl:dr; [show me how to fix it](#is-there-a-better-way)_
 

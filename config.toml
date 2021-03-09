@@ -26,7 +26,7 @@ summaryLength = 30
 [params]
   mainSections = ["posts"]
   google_analytics_id=""
-  homepage_button_link = '/posts'
+  homepage_button_link = '/posts/yieldwatch'
   homepage_button_text = 'Read $WATCH Breakdown'
   homepage_intro = 'IFOWatch analyzes recent IFO data using bscscan.'
   homepage_image = '/chart.png'
