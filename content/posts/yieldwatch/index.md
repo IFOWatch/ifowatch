@@ -113,6 +113,7 @@ _View interactive graphs [here](/ifowatch/yieldwatch-graphs/)_
 
 We can immediately make one very telling observation about this graph:
 a total of **ten addresses** (or **0.1%** of 10,000+ participants) collected **over 25%** of $WATCH tokens.
+Already it is obvious that a small number of individuals are monopolizing IFOs.
 
 Yet, if we visualize this data as a share of participating addresses, the story becomes even more frustrating.
 
