@@ -220,7 +220,7 @@ It may not be a silver bullet, but instead an incremental improvement
 
 IFO facilitators such as PancakeSwap could also look towards more high-tech & forward-thinking on-chain solutions,
 such as using ID-verifying technology like [Litentry](https://www.litentry.com/) to ensure that individuals
-don't participate part their fare share _without implementing KYC_. If PancakeSwap can't solve this problem,
+don't participate past their fare share _without implementing KYC_. If PancakeSwap can't solve this problem,
 perhaps their community would be better served by platforms that aren't afraid to tackle complicated
 challenges. (This author wonders if perhaps up-and-coming exchanges like [Goose Finance](https://goosedefi.com)
 may be up to the challenge?)
