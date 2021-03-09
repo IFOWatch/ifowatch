@@ -46,7 +46,7 @@ have [claimed](https://twitter.com/wschambach1/status/1367444965824090116) that
 the overflow method is "[fair](https://twitter.com/TheBishopNehru/status/1367434422555967488)," this
 post posits that the vast majority of
 gains were realized by "whales," or individuals who are
-able to put up an amount of funds that is **significantly disproportionate** to the number of participands. All the while,
+able to put up an amount of funds that is **significantly disproportionate** to the number of participants. All the while,
 the majority of participants were left comparatively very little tokens, even with non-negligible four-figure pledges.
 In effect this means that **the rich got richer** while everyone else got very little.
 
