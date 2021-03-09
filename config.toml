@@ -1,0 +1,50 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "IFOWatch"
+themesDir = "themes"
+theme = "hugo-whisper-theme"
+publishDir = "docs"
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+# Controls how many words are printed in the content summary on the docs homepage.
+# See https://gohugo.io/content-management/summaries/
+summaryLength = 30
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+
+[params]
+  mainSections = ["posts"]
+  google_analytics_id=""
+  homepage_button_link = '/posts'
+  homepage_button_text = 'Read $WATCH Breakdown'
+  homepage_intro = 'IFOWatch analyzes recent IFO data using bscscan.'
+  homepage_image = '/images/terminal.gif'
+
+  ## You can enable to add anchor links to header elements
+  # enable_anchor_link = true
+
+  [params.homepage_meta_tags]
+    meta_description = "IFOWatch analyzes recent IFO data using bscscan."
+    meta_og_title = "IFOWatch"
+    meta_og_type = "website"
+    meta_og_url = "https://hugo-whisper.netlify.app"
+    meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-whisper-theme/master/images/tn.png"
+    meta_og_description = "IFOWatch analyzes recent IFO data using bscscan."
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@zerostaticio"
+    meta_twitter_creator = "@zerostaticio"
+
+  [params.logo]
+      mobile = "/images/logo-mobile.svg"
+      standard  = "/images/logo.svg"
